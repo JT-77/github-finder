@@ -1,15 +1,14 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-const UserItem = (props) => {
-  console.log(props.user);
+const UserItem = ({ user: { avatar_url, login, html_url } }) => {
   return (
     <div className='card text-center'>
-      <img src={props.user.avatar_url} className='round-img' alt='loading' />
-      <h3>{props.user.login}</h3>
+      <img src={avatar_url} className='round-img' alt='loading' />
+      <h3>{login}</h3>
 
       <div>
-        <a href={props.user.html_url} className='btn btn-dark btn-sm my-1'>
+        <a href={html_url} className='btn btn-dark btn-sm my-1'>
           More
         </a>
       </div>
