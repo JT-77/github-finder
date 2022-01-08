@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import GithubContext from '../../Context/Github/GithubContext';
 
-const Search = (props) => {
+const Search = () => {
+  const githubContext = useContext(GithubContext);
+  const { clearUsers, searchUsers } = githubContext;
+
   const [text, setText] = useState('');
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    props.searchUsers(text);
+    searchUsers(text);
     setText('');
   };
 
@@ -28,9 +32,7 @@ const Search = (props) => {
           className='btn btn-dark btn-block'
         />
       </form>
-      <button
-        onClick={() => props.clearUsers()}
-        className='btn btn-light btn-block'>
+      <button onClick={() => clearUsers()} className='btn btn-light btn-block'>
         {' '}
         Clear{' '}
       </button>
